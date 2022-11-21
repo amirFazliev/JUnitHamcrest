@@ -1,7 +1,14 @@
 import org.example.Contact;
 import org.example.PhoneBook;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.AnyOf.anyOf;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.object.HasToString.hasToString;
 
 //todo Домашнее задание к занятию 4.5. Коллекции TreeMap и TreeSet  - Пропущенные звонки
 
@@ -17,8 +24,7 @@ public class MainTests {
         Boolean expected = true;
 
         boolean result = first.equals(second);
-
-        Assertions.assertEquals(expected, result);
+        assertThat(expected, equalTo(result));
     }
 
     @Test
@@ -27,7 +33,7 @@ public class MainTests {
 
         boolean result = first.equals(third);
 
-        Assertions.assertEquals(expected, result);
+        assertThat(expected, equalTo(result));
     }
 
     @Test
@@ -36,7 +42,7 @@ public class MainTests {
 
         Contact result = phoneBookTest.seachContactNumber("88");
 
-        Assertions.assertNull(result);
+        assertThat(result, nullValue());
     }
 
     @Test
@@ -45,7 +51,7 @@ public class MainTests {
 
         Contact result = phoneBookTest.seachContactNumber("89");
 
-        Assertions.assertNotNull(result);
+        assertThat(result, notNullValue());
     }
 
     @Test
@@ -54,7 +60,7 @@ public class MainTests {
 
         String result = phoneBookTest.testInNull(fourth);
 
-        Assertions.assertEquals(expected, result);
+        assertThat(expected, equalTo(result));
     }
 
     @Test
@@ -63,6 +69,24 @@ public class MainTests {
 
         String result = phoneBookTest.testInNull(first);
 
-        Assertions.assertEquals(expected, result);
+        assertThat(expected, equalTo(result));
     }
+
+    @Test
+    public void testContactCanDethis() {
+        String result = first.toString();
+
+        assertThat(result, anyOf(containsString("-")));
+    }
+
+    @Test
+    public void testContactEqualsToString() {
+        String result = first.toString();
+
+        assertThat(result, hasToString("first - 89"));
+    }
+
+
+
+
 }
