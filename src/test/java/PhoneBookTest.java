@@ -9,13 +9,13 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.hamcrest.object.HasToString.hasToString;
 
 public class PhoneBookTest {
-    PhoneBook phoneBookTest = new PhoneBook();
-    Contact first = new Contact("first", "89");
-    Contact second = new Contact(null, "95");
+    public Contact first = new Contact("first", "89");
+    public Contact second = new Contact(null, "95");
 
 
     @Test
     public void testSeachContactNumberInPhonebookNull () {
+        PhoneBook phoneBookTest = new PhoneBook();
         phoneBookTest.addPhoneBook(first.getNumberPhone(), first);
         Contact expected = null;
 
@@ -26,6 +26,7 @@ public class PhoneBookTest {
 
     @Test
     public void testSeachContactNumberInPhonebookNotNull () {
+        PhoneBook phoneBookTest = new PhoneBook();
         phoneBookTest.addPhoneBook(first.getNumberPhone(), first);
         Contact expected= first;
 
@@ -36,6 +37,7 @@ public class PhoneBookTest {
 
     @Test
     public void testInNullInPhonebookNull () {
+        PhoneBook phoneBookTest = new PhoneBook();
         String expected = second.getNumberPhone();
 
         String result = phoneBookTest.testInNull(second);
@@ -45,6 +47,7 @@ public class PhoneBookTest {
 
     @Test
     public void testInNullInPhonebookNotNull () {
+        PhoneBook phoneBookTest = new PhoneBook();
         String expected = first.getName();
 
         String result = phoneBookTest.testInNull(first);
